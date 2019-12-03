@@ -29,3 +29,6 @@ module NameMap = Map.Make(struct
     type t = Api.Dep.NameSet.elt
     let compare : t -> t -> int = Pervasives.compare
   end)
+
+(** Functional maps over strings. *)
+module StrMap = Map.Make(String)

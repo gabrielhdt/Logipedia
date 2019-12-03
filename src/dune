@@ -28,6 +28,15 @@
            coq lean matita openstt opentheory holstt hollight)
   (libraries logipedia.core))
 
+(library
+  (name pvs)
+  (public_name logipedia.pvs)
+  (synopsis "Manipulate pvs encoding in Logipedia")
+  (wrapped false)
+  (modules core sttfa2core)
+  (libraries logipedia.core logipedia.sttfa bindlib))
+
+
 (executable
   (name logipedia)
   (public_name logipedia)
