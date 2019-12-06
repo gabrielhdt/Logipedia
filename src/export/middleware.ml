@@ -3,7 +3,6 @@ module D = Api.Dep
 module E = Parsing.Entry
 module T = Kernel.Term
 module U = Uri
-module Jt = Json_types
 module type S = sig
   type tx
   exception IllTaxon
@@ -15,6 +14,7 @@ module type S = sig
   val is_axiomatic : tx -> bool
   val fields_of_def : tx -> 'a option -> 'a -> 'a * 'a option
   val label : tx -> string * string option
+  val string_of_item : string -> E.entry -> Systems.system -> string
 end
 
 module Dummy : S =
@@ -22,11 +22,12 @@ struct
   type tx = unit
   let theory = "dummy"
   exception IllTaxon
-  let tx_of_def _ _ = assert false
-  let tx_of_decl _ = assert false
-  let string_of_tx ?short:_ _ = assert false
-  let tx_of_string _ = assert false
-  let is_axiomatic _ = assert false
-  let fields_of_def _ _ _ = assert false
-  let label _ = assert false
+  let tx_of_def _ _ = ()
+  let tx_of_decl _ = ()
+  let string_of_tx ?short:_ _ = "dummy"
+  let tx_of_string _ = ()
+  let is_axiomatic _ = false
+  let fields_of_def _ _ t = t,None
+  let label _ = "dummy",None
+  let string_of_item _ _ _ = "dummy"
 end

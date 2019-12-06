@@ -3,7 +3,6 @@ module D = Api.Dep
 module E = Parsing.Entry
 module T = Kernel.Term
 module U = Uri
-module Jt = Json_types
 
 module Sttfa : Middleware.S =
 struct
@@ -69,4 +68,11 @@ struct
     | TxAxm -> ("statement", None)
     | TxDef -> ("body", Some("type_annotation"))
     | TxThm -> ("statement", None)
+
+  let string_of_item mident entry system =
+    try
+      let (module ES) = Export.of_system system in
+      ES.string_of_item (Compile.compile_entry (B.mk_mident mident) entry)
+    with Export.Pvs -> "FIXME: printing not yet available for PVS"
+
 end
