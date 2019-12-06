@@ -64,7 +64,7 @@ let rec mk_term : Context.t -> Ast._te -> te = fun ctx te ->
     let x = Bindlib.new_var ty_mkfree v in
     let ctx = Context.add_tyvar v x ctx in
     mk_term ctx te
-  | Cst(_) -> failwith "Not yet implemented"
+  | A.Cst(_)          -> failwith "Not yet implemented"
 
 (** [mk_poly_term ctx t] creates a PVS core term from a polymorphic sttfa
     term [t] and context [ctx]. *)
