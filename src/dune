@@ -25,7 +25,7 @@
   (wrapped false)
   (modules core sttfa2core)
   (libraries logipedia.core logipedia.sttfa bindlib))
-
+(library
   (name middleware)
   (public_name logipedia.middleware)
   (synopsis "Middleware between logics and json export for Logipedia.")
